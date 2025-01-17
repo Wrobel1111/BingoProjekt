@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.project.androidbingo.FirstFragment"
+        android:name="com.project.androidbingo.main_menu"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/main_menu">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
