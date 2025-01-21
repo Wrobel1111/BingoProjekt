@@ -1,15 +1,17 @@
 package com.project.androidbingo
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.project.androidbingo.databinding.MainMenuBinding
-import org.w3c.dom.Text
+
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -21,9 +23,9 @@ class MainMenu : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private val numOfButtons = 4; //liczba przycisków do bingo na ekranie głównym
-                                  //Chwilowo będzie na sztywno
-    val allButtons = mutableListOf<Button>();
+    private val numOfButtons = 4 //liczba przycisków do bingo na ekranie głównym
+                                 //Chwilowo będzie na sztywno
+    val allButtons = mutableListOf<Button>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,7 +48,14 @@ class MainMenu : Fragment() {
         //def.text = view.resources.getIdentifier("button_bingo_"+1,"id", "com.project.androidbingo").toString();
         for (i in 1..numOfButtons)
         {
-            allButtons.add(view.findViewById(view.resources.getIdentifier("button_bingo_"+i,"id", "com.project.androidbingo")))
+            val tempButton : Button = view.findViewById(view.resources.getIdentifier("button_bingo_"+i,"id", "com.project.androidbingo"))
+            allButtons.add(tempButton)
+            tempButton.setOnClickListener {
+                val intent = Intent(activity, current_bingo::class.java)
+                intent.putExtra("Jakistamsyf", tempButton.toString())
+                startActivity(intent)
+            }
+
         }
     }
 

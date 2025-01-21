@@ -1,6 +1,7 @@
 package com.project.androidbingo
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,5 +17,9 @@ class current_bingo : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        var  def  = findViewById<TextView>(R.id.Test)
+        val abc = intent.getStringExtra("Jakistamsyf")
+
+        def.text = abc
     }
 }
