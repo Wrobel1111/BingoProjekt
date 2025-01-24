@@ -8,5 +8,18 @@
         android:id="@+id/mainMenu"
         android:name="com.project.androidbingo.MainMenu"
         android:label="main_menu"
-        tools:layout="@layout/main_menu" />
+        tools:layout="@layout/main_menu" >
+        <action
+            android:id="@+id/action_mainMenu_to_current_bingo"
+            app:destination="@id/current_bingo"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <activity
+        android:id="@+id/current_bingo"
+        android:name="com.project.androidbingo.current_bingo"
+        android:label="activity_current_bingo"
+        tools:layout="@layout/activity_current_bingo" />
 </navigation>

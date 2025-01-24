@@ -67,6 +67,7 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/button_bingo_1"
                     android:layout_width="150dp"
                     android:layout_height="100dp"
                     android:layout_margin="16dp"
@@ -75,6 +76,7 @@
                 </Button>
 
                 <Button
+                    android:id="@+id/button_bingo_2"
                     android:layout_width="150dp"
                     android:layout_height="100dp"
                     android:layout_margin="16dp"
@@ -83,6 +85,7 @@
                 </Button>
 
                 <Button
+                    android:id="@+id/button_bingo_3"
                     android:layout_width="150dp"
                     android:layout_height="100dp"
                     android:layout_margin="16dp"
@@ -91,6 +94,7 @@
                 </Button>
 
                 <Button
+                    android:id="@+id/button_bingo_4"
                     android:layout_width="150dp"
                     android:layout_height="100dp"
                     android:layout_margin="16dp"
