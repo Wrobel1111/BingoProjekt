@@ -16,7 +16,7 @@
             android:name=".current_bingo"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity_register"
             android:exported="true"
             android:theme="@style/Theme.AndroidBingo">
             <intent-filter>
@@ -25,6 +25,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AndroidBingo" />
     </application>
 
 </manifest>
