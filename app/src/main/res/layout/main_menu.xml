@@ -4,50 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/tlo"
     tools:context=".MainMenu">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:padding="16dp"
+        tools:ignore="ExtraText">
 
-        <Button
+      <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="345dp"
-            tools:ignore="MissingConstraints">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp">
+    </Button>
             <!--Tak, wiem, ten przycisk póki co tu siedzi
             na wszelki wypadek, pozostałość po pustym projekcie-->
-        </Button>
+
+
+        <!-- Użycie niestandardowej czcionki --><![CDATA[
+
+        app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+
+
+
+
+        ]]>
 
         <TextView
             android:id="@+id/Greeter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/greeter"
+            android:layout_marginEnd="68dp"
+            android:fontFamily="@font/font"
+            android:text="@string/bingo_2025"
             android:textAlignment="center"
-            android:textSize="24sp"
+            android:textSize="36sp"
             android:textStyle="bold"
+
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.985"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.086" />
+
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
-            android:text="@string/your_bingos"
-            android:textAlignment="viewStart"
+            android:elevation="4dp"
+            android:fontFamily="@font/font"
+            android:padding="12dp"
+            android:text="Twoje bingo"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Greeter" />
 
@@ -71,6 +100,7 @@
                     android:layout_width="150dp"
                     android:layout_height="100dp"
                     android:layout_margin="16dp"
+                    android:fontFamily="@font/font"
                     android:text="test">
 
                 </Button>
@@ -80,6 +110,7 @@
                     android:layout_width="150dp"
                     android:layout_height="100dp"
                     android:layout_margin="16dp"
+                    android:fontFamily="@font/font"
                     android:text="test 2">
 
                 </Button>
@@ -89,6 +120,7 @@
                     android:layout_width="150dp"
                     android:layout_height="100dp"
                     android:layout_margin="16dp"
+                    android:fontFamily="@font/font"
                     android:text="test 3">
 
                 </Button>
@@ -98,9 +130,12 @@
                     android:layout_width="150dp"
                     android:layout_height="100dp"
                     android:layout_margin="16dp"
+                    android:fontFamily="@font/font"
                     android:text="test 4">
 
                 </Button>
+
+
 
             </LinearLayout>
         </HorizontalScrollView>

@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="color_books">#FF5722</color>
+    <color name="color_travel">#4CAF50</color>
+    <color name="color_movies">#2196F3</color>
+    <color name="color_creative">#9C27B0</color>
+    <color name="colorAccent">#03DAC5</color>
+
+
 </resources>
