@@ -46,4 +46,14 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="data_urodzenia">Data urodzenia</string>
+    <string name="dd_mm_yyyy">DD/MM/YYYY</string>
+    <string name="podaj_email">Podaj email</string>
+    <string name="podaj_imi">Podaj imię</string>
+    <string name="podaj_nazwisko">Podaj nazwisko</string>
+    <string name="email">Email</string>
+    <string name="imi">Imię</string>
+    <string name="zarejestruj_si">Zarejestruj się</string>
+    <string name="nazwisko">Nazwisko</string>
+    <string name="rejestracja">Rejestracja</string>
 </resources>
