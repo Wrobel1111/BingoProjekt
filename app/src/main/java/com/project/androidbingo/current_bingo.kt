@@ -18,7 +18,7 @@ class current_bingo : AppCompatActivity() {
             insets
         }
         var  def  = findViewById<TextView>(R.id.Test)
-        val abc = intent.getStringExtra("Jakistamsyf")
+        val abc = intent.getStringExtra("button_name")
 
         def.text = abc
     }
