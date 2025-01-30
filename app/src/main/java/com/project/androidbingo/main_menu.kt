@@ -44,15 +44,10 @@ class MainMenu : Fragment() {
         //}
 
         // Lista nazw dla przycisków
-        val buttonNames = listOf("Książkowe", "Podróżnicze", "Filmy", "Kreatywne")
+        val buttonNames = listOf("Ksiazki","Podroze", "Filmy", "Kreatywne")
 
-        // Lista kolorów dla tła przycisków
-        val buttonColors = listOf(
-            R.color.color_books,
-            R.color.color_travel,
-            R.color.color_movies,
-            R.color.color_creative
-        )
+
+
         //val abc = view.findViewById<Button>(R.id.button_bingo_1).id;
         //val  def : TextView = view.findViewById<TextView>(R.id.textView);
         //def.text = view.resources.getIdentifier("button_bingo_"+1,"id", "com.project.androidbingo").toString();
@@ -63,8 +58,7 @@ class MainMenu : Fragment() {
             // Ustaw nazwę dla przycisku z listy buttonNames
             tempButton.text = buttonNames[i - 1]
 
-            // Ustaw kolor tła dla przycisku z listy buttonColors
-            tempButton.setBackgroundResource(buttonColors[i - 1])
+
 
             tempButton.setOnClickListener {
                 val intent = Intent(activity, current_bingo::class.java)
