@@ -14,15 +14,6 @@
         android:orientation="vertical">
 
         <!-- Toolbar w prawym górnym rogu -->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="wrap_content"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title=""
-            app:menu="@menu/menu_main"
-            android:layout_gravity="end"/>
 
         <!-- ConstraintLayout jako główna część UI -->
         <androidx.constraintlayout.widget.ConstraintLayout
