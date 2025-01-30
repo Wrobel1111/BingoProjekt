@@ -13,6 +13,8 @@ import androidx.navigation.fragment.findNavController
 import com.project.androidbingo.databinding.MainMenuBinding
 import androidx.core.content.ContextCompat
 import android.os.Handler
+import android.widget.Toast
+
 
 
 
@@ -67,10 +69,11 @@ class MainMenu : Fragment() {
             tempButton.setOnClickListener {
 
                     tempButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.purple))
+                Toast.makeText(activity, "Twoje bingo: ${tempButton.text}", Toast.LENGTH_SHORT).show()
 
                     val intent = Intent(activity, current_bingo::class.java)
-                         intent.putExtra("button_name", tempButton.toString())
-                            startActivity(intent)
+                intent.putExtra("button_name", tempButton.toString())
+                startActivity(intent)
             }
 
         }
