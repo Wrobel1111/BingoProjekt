@@ -11,6 +11,10 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.project.androidbingo.databinding.MainMenuBinding
+import androidx.core.content.ContextCompat
+import android.os.Handler
+
+
 
 
 /**
@@ -61,9 +65,12 @@ class MainMenu : Fragment() {
 
 
             tempButton.setOnClickListener {
-                val intent = Intent(activity, current_bingo::class.java)
-                intent.putExtra("button_name", tempButton.toString())
-                startActivity(intent)
+
+                    tempButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.purple))
+
+                    val intent = Intent(activity, current_bingo::class.java)
+                         intent.putExtra("button_name", tempButton.toString())
+                            startActivity(intent)
             }
 
         }
