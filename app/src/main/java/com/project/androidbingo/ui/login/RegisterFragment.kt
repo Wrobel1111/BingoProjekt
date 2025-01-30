@@ -13,6 +13,7 @@ import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.project.androidbingo.R
 import com.project.androidbingo.databinding.FragmentRegisterBinding
@@ -77,6 +78,20 @@ class RegisterFragment : Fragment() {
             } else {
                 saveUserProfile(requireContext(), name, surname, email, birthdate)
                 Toast.makeText(context, "Rejestracja zakończona pomyślnie!", Toast.LENGTH_SHORT).show()
+                //zapisanie w sharedprefreneces
+                val sharedPreferences = requireActivity().getSharedPreferences("UserData", Context.MODE_PRIVATE)
+                with(sharedPreferences.edit()) {
+                    putString("name", name)
+                    putString("surname", surname)
+                    putString("email", email)
+                    putString("birthdate", birthdate)
+                    putBoolean("isRegistered", true) //flaga rejestracji
+                    apply()
+                }
+
+                Toast.makeText(context, "Rejestracja zakończona pomyślnie!", Toast.LENGTH_SHORT).show()
+                //przejscie do ekranu glownego
+                findNavController().navigate(R.id.action_registerFragment_to_mainMenu)
             }
         }
 

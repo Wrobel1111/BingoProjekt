@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
         val isRegistered = sharedPreferences.getBoolean("isRegistered", false)
         //TODO: przy rejestracji trzeba wprowadzić odpowiednią zmianę
 
+
         // Przekierowanie do RegisterFragment jesli jest zarejestrowany
         if (!isRegistered)
             navController.navigate(R.id.registerFragment)
