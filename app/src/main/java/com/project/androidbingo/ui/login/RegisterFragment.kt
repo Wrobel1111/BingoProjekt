@@ -65,32 +65,32 @@ class RegisterFragment : Fragment() {
             }
         }
 
-        //TODO: przy wprowadzeniu zapisu do plików, trzeba wprowdzić zmianę do preferencji
-        //Patrz: MainActivity.kt linia 35
         registerButton.setOnClickListener {
-            val name = editName.text.toString()
-            val surname = editSurname.text.toString()
-            val email = editEmail.text.toString()
-            val birthdate = editBirthdate.text.toString()
+            val name = editName.text.toString().trim()
+            val surname = editSurname.text.toString().trim()
+            val email = editEmail.text.toString().trim()
+            val birthdate = editBirthdate.text.toString().trim()
 
             if (name.isEmpty() || surname.isEmpty() || email.isEmpty() || birthdate.isEmpty()) {
                 Toast.makeText(context, "Wszystkie pola muszą być wypełnione!", Toast.LENGTH_SHORT).show()
             } else {
+                //Zapisanie do pliku
                 saveUserProfile(requireContext(), name, surname, email, birthdate)
-                Toast.makeText(context, "Rejestracja zakończona pomyślnie!", Toast.LENGTH_SHORT).show()
-                //zapisanie w sharedprefreneces
+
+                //Zapisanie rejestracji w SharedPrefernces
                 val sharedPreferences = requireActivity().getSharedPreferences("UserData", Context.MODE_PRIVATE)
                 with(sharedPreferences.edit()) {
                     putString("name", name)
                     putString("surname", surname)
                     putString("email", email)
                     putString("birthdate", birthdate)
-                    putBoolean("isRegistered", true) //flaga rejestracji
+                    putBoolean("isRegistered", true) //ustawienie rejestracji
                     apply()
                 }
 
                 Toast.makeText(context, "Rejestracja zakończona pomyślnie!", Toast.LENGTH_SHORT).show()
-                //przejscie do ekranu glownego
+
+                // przejscie do ekranu glownego
                 findNavController().navigate(R.id.action_registerFragment_to_mainMenu)
             }
         }
