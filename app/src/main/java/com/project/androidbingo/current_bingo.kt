@@ -17,9 +17,12 @@ class current_bingo : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        //Znajdź pole tekstowe
         var  def  = findViewById<TextView>(R.id.Test)
         val abc = intent.getStringExtra("button_name")
 
+        //I wstaw tam dane przekazane z intencji
         def.text = abc
     }
 }

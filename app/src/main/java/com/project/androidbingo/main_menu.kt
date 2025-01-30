@@ -30,14 +30,13 @@ class MainMenu : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     private val numOfButtons = 4 //liczba przycisków do bingo na ekranie głównym
-                                 //Chwilowo będzie na sztywno
+                                 //Chwilowo© będzie na sztywno
     val allButtons = mutableListOf<Button>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        //val packageName =
         _binding = MainMenuBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -45,18 +44,10 @@ class MainMenu : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //binding.buttonFirst.setOnClickListener {
-        //    findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        //}
 
         // Lista nazw dla przycisków
         val buttonNames = listOf("Ksiazki","Podroze", "Filmy", "Kreatywne")
 
-
-
-        //val abc = view.findViewById<Button>(R.id.button_bingo_1).id;
-        //val  def : TextView = view.findViewById<TextView>(R.id.textView);
-        //def.text = view.resources.getIdentifier("button_bingo_"+1,"id", "com.project.androidbingo").toString();
         for (i in 1..numOfButtons)
         {
             val tempButton : Button = view.findViewById(view.resources.getIdentifier("button_bingo_"+i,"id", "com.project.androidbingo"))
@@ -68,14 +59,13 @@ class MainMenu : Fragment() {
 
             tempButton.setOnClickListener {
 
-                    tempButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.purple))
+                tempButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.purple))
                 Toast.makeText(activity, "Twoje bingo: ${tempButton.text}", Toast.LENGTH_SHORT).show()
 
-                    val intent = Intent(activity, current_bingo::class.java)
+                val intent = Intent(activity, current_bingo::class.java)
                 intent.putExtra("button_name", tempButton.toString())
                 startActivity(intent)
             }
-
         }
     }
 

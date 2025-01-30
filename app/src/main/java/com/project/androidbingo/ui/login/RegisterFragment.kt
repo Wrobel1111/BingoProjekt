@@ -64,6 +64,8 @@ class RegisterFragment : Fragment() {
             }
         }
 
+        //TODO: przy wprowadzeniu zapisu do plików, trzeba wprowdzić zmianę do preferencji
+        //Patrz: MainActivity.kt linia 35
         registerButton.setOnClickListener {
             val name = editName.text.toString()
             val surname = editSurname.text.toString()

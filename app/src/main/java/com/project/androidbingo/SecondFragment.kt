@@ -11,6 +11,8 @@ import com.project.androidbingo.databinding.FragmentSecondBinding
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
+
+//! To jest pozostałość po pustym projekcie. Niech zostanie, nie boli.
 class SecondFragment : Fragment() {
 
     private var _binding: FragmentSecondBinding? = null
@@ -33,8 +35,6 @@ class SecondFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonSecond.setOnClickListener {
-            //findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-            //resztka po templatce
         }
     }
 

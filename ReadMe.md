@@ -7,4 +7,5 @@ Bingo App to aplikacja mobilna na platformę Android, która oferuje użytkownik
 [Jan Rutkowski](https://github.com/janek559)\
 [Jakub Pielichowski](https://github.com/hajzen)\
 [Jeremiasz Roskowiński](https://github.com/skrainy77)\
-[Daria Wasilewska](https://github.com/Frikaczello)\
+[Daria Wasilewska](https://github.com/Frikaczello)
+

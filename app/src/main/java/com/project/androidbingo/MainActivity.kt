@@ -28,12 +28,16 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
-        //Czy jest zarejestrwoany
+
+        //Czy użytkownik jest zarejestrowany
         val sharedPreferences = getSharedPreferences("UserData", MODE_PRIVATE)
         val isRegistered = sharedPreferences.getBoolean("isRegistered", false)
-        // Przekierowanie do RegisterFragment jesli jest zarejesstrowany
-        if (!isRegistered) {
-            navController.navigate(R.id.registerFragment)}
+        //TODO: przy rejestracji trzeba wprowadzić odpowiednią zmianę
+
+        // Przekierowanie do RegisterFragment jesli jest zarejestrowany
+        if (!isRegistered)
+            navController.navigate(R.id.registerFragment)
+
         //button ikona poczty
         binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -47,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
+    //Jeszcze nie działa
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_profile -> {
