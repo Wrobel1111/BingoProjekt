@@ -1,12 +1,10 @@
 package com.project.androidbingo.ui.login
 
+import android.content.Context
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
@@ -18,6 +16,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.project.androidbingo.R
 import com.project.androidbingo.databinding.FragmentRegisterBinding
+import org.json.JSONObject
+import java.io.File
+import java.io.FileWriter
+import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -26,9 +28,6 @@ class RegisterFragment : Fragment() {
 
     private lateinit var loginViewModel: LoginViewModel
     private var _binding: FragmentRegisterBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -36,10 +35,8 @@ class RegisterFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -58,91 +55,54 @@ class RegisterFragment : Fragment() {
             .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
             .build()
 
-        editBirthdate.setOnClickListener(View.OnClickListener { v: View? ->
-            getFragmentManager()?.let { datePicker.show(it, "DATE_PICKER") }
+        editBirthdate.setOnClickListener {
+            parentFragmentManager.let { datePicker.show(it, "DATE_PICKER") }
             datePicker.addOnPositiveButtonClickListener { selection: Long ->
                 val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
                 val date = Date(selection)
                 editBirthdate.setText(dateFormat.format(date))
             }
-        })
+        }
 
-        registerButton.setOnClickListener { v: View? ->
-            val name: String = editName.getText().toString()
-            val surname: String = editSurname.getText().toString()
-            val email: String = editEmail.getText().toString()
-            val birthdate: String = editBirthdate.getText().toString()
+        registerButton.setOnClickListener {
+            val name = editName.text.toString()
+            val surname = editSurname.text.toString()
+            val email = editEmail.text.toString()
+            val birthdate = editBirthdate.text.toString()
+
             if (name.isEmpty() || surname.isEmpty() || email.isEmpty() || birthdate.isEmpty()) {
-                Toast.makeText(
-                    context,
-                    "Wszystkie pola muszą być wypełnione!",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(context, "Wszystkie pola muszą być wypełnione!", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(
-                    context,
-                    "Rejestracja zakończona pomyślnie!",
-                    Toast.LENGTH_SHORT
-                ).show()
+                saveUserProfile(requireContext(), name, surname, email, birthdate)
+                Toast.makeText(context, "Rejestracja zakończona pomyślnie!", Toast.LENGTH_SHORT).show()
             }
         }
 
-        loginViewModel.loginResult.observe(viewLifecycleOwner,
-            Observer { loginResult ->
-                loginResult ?: return@Observer
-                loadingProgressBar.visibility = View.GONE
-                loginResult.error?.let {
-                    showLoginFailed(it)
-                }
-                loginResult.success?.let {
-                    updateUiWithUser(it)
-                }
-            })
-        /*
-        val afterTextChangedListener = object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-                // ignore
-            }
+        loginViewModel.loginResult.observe(viewLifecycleOwner, Observer { loginResult ->
+            loginResult ?: return@Observer
+            loadingProgressBar.visibility = View.GONE
+            loginResult.error?.let { showLoginFailed(it) }
+            loginResult.success?.let { updateUiWithUser(it) }
+        })
+    }
 
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                // ignore
-            }
+    private fun saveUserProfile(context: Context, name: String, surname: String, email: String, birthdate: String) {
+        val userProfile = JSONObject()
+        userProfile.put("name", name)
+        userProfile.put("surname", surname)
+        userProfile.put("email", email)
+        userProfile.put("birthdate", birthdate)
 
-            override fun afterTextChanged(s: Editable) {
-                loginViewModel.loginDataChanged(
-                    editName.text.toString(),
-                    passwordEditText.text.toString()
-                )
-            }
+        val file = File(context.filesDir, "user_profile.json")
+        try {
+            FileWriter(file).use { writer -> writer.write(userProfile.toString()) }
+        } catch (e: IOException) {
+            e.printStackTrace()
         }
-        */
-
-        /*
-        usernameEditText.addTextChangedListener(afterTextChangedListener)
-        passwordEditText.addTextChangedListener(afterTextChangedListener)
-        passwordEditText.setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                loginViewModel.login(
-                    usernameEditText.text.toString(),
-                    passwordEditText.text.toString()
-                )
-            }
-            false
-        }
-
-        loginButton.setOnClickListener {
-            loadingProgressBar.visibility = View.VISIBLE
-            loginViewModel.login(
-                usernameEditText.text.toString(),
-                passwordEditText.text.toString()
-            )
-        }
-        */
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome) + model.displayName
-        // TODO : initiate successful logged in experience
         val appContext = context?.applicationContext ?: return
         Toast.makeText(appContext, welcome, Toast.LENGTH_LONG).show()
     }

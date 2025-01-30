@@ -7,122 +7,117 @@
     android:background="@drawable/tlo"
     tools:context=".MainMenu">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!-- 🔹 Tylko jedno bezpośrednie dziecko dla NestedScrollView -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp"
-        tools:ignore="ExtraText">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/button"
+        <!-- Toolbar w prawym górnym rogu -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="16dp">
-        </Button>
-        <!--Tak, wiem, ten przycisk póki co tu siedzi
-        na wszelki wypadek, pozostałość po pustym projekcie-->
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title=""
+            app:menu="@menu/menu_main"
+            android:layout_gravity="end"/>
 
+        <!-- ConstraintLayout jako główna część UI -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            tools:ignore="ExtraText">
 
-        <!-- Użycie niestandardowej czcionki --><![CDATA[
-
-        app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        ]]>
-
-        <ImageView
-            android:id="@+id/Greeter"
-            android:layout_width="500dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/tytul2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.239"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/textView"
-            android:layout_width="258dp"
-            android:layout_height="64dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:scaleType="fitStart"
-            android:src="@drawable/twoje_bingo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Greeter" />
-
-        <HorizontalScrollView
-            android:layout_width="409dp"
-            android:layout_height="210dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView">
-
-            <LinearLayout
+            <Button
+                android:id="@+id/button"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:text="Button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="16dp"/>
 
-                <Button
-                    android:id="@+id/button_bingo_1"
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="16dp"
-                    android:fontFamily="@font/font"
-                    android:backgroundTint="@color/blue"
-                    android:text="test">
+            <ImageView
+                android:id="@+id/Greeter"
+                android:layout_width="500dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/tytul2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.239"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
-                </Button>
+            <ImageView
+                android:id="@+id/textView"
+                android:layout_width="258dp"
+                android:layout_height="64dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="fitStart"
+                android:src="@drawable/twoje_bingo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Greeter"/>
 
-                <Button
-                    android:id="@+id/button_bingo_2"
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="16dp"
-                    android:fontFamily="@font/font"
-                    android:backgroundTint="@color/yellow"
-                    android:text="test 2">
+            <HorizontalScrollView
+                android:layout_width="409dp"
+                android:layout_height="210dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView">
 
-                </Button>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/button_bingo_3"
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="16dp"
-                    android:fontFamily="@font/font"
-                    android:backgroundTint="@color/orange"
-                    android:text="test 3">
+                    <Button
+                        android:id="@+id/button_bingo_1"
+                        android:layout_width="150dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="16dp"
+                        android:fontFamily="@font/font"
+                        android:backgroundTint="@color/blue"
+                        android:text="test"/>
 
-                </Button>
+                    <Button
+                        android:id="@+id/button_bingo_2"
+                        android:layout_width="150dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="16dp"
+                        android:fontFamily="@font/font"
+                        android:backgroundTint="@color/yellow"
+                        android:text="test 2"/>
 
-                <Button
-                    android:id="@+id/button_bingo_4"
-                    android:layout_width="150dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="16dp"
-                    android:fontFamily="@font/font"
-                    android:backgroundTint="@color/green"
-                    android:text="test 4">
+                    <Button
+                        android:id="@+id/button_bingo_3"
+                        android:layout_width="150dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="16dp"
+                        android:fontFamily="@font/font"
+                        android:backgroundTint="@color/orange"
+                        android:text="test 3"/>
 
-                </Button>
-
-
-
-            </LinearLayout>
-        </HorizontalScrollView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <Button
+                        android:id="@+id/button_bingo_4"
+                        android:layout_width="150dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="16dp"
+                        android:fontFamily="@font/font"
+                        android:backgroundTint="@color/green"
+                        android:text="test 4"/>
+                </LinearLayout>
+            </HorizontalScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </androidx.core.widget.NestedScrollView>
