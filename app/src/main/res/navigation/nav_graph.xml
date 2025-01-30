@@ -31,10 +31,25 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_mainMenu_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <activity
         android:id="@+id/current_bingo"
         android:name="com.project.androidbingo.current_bingo"
         android:label="activity_current_bingo"
         tools:layout="@layout/activity_current_bingo" />
+
+    <!-- Dodaj nowy fragment ProfileFragment -->
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.project.androidbingo.ui.profile.ProfileFragment"
+        android:label="Mój profil"
+        tools:layout="@layout/fragment_profile" />
+
 </navigation>

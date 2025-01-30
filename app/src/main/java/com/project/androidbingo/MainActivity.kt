@@ -10,7 +10,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import com.project.androidbingo.databinding.ActivityMainBinding
-import com.project.androidbingo.ui.profile.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,21 +24,22 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
+        // Inicjalizacja NavController
         val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        //Czy użytkownik jest zarejestrowany
+        // Czy użytkownik jest zarejestrowany
         val sharedPreferences = getSharedPreferences("UserData", MODE_PRIVATE)
         val isRegistered = sharedPreferences.getBoolean("isRegistered", false)
-        //TODO: przy rejestracji trzeba wprowadzić odpowiednią zmianę
+        // TODO: przy rejestracji trzeba wprowadzić odpowiednią zmianę
 
-
-        // Przekierowanie do RegisterFragment jesli jest zarejestrowany
-        if (!isRegistered)
+        // Przekierowanie do RegisterFragment jeśli nie jest zarejestrowany
+        if (!isRegistered) {
             navController.navigate(R.id.registerFragment)
+        }
 
-        //button ikona poczty
+        // Button ikona poczty
         binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null)
@@ -52,15 +52,12 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    //Jeszcze nie działa
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_profile -> {
-                val profileFragment = ProfileFragment()
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, profileFragment)
-                    .addToBackStack(null)
-                    .commit()
+                // Nawiguj do ProfileFragment
+                val navController = findNavController(R.id.nav_host_fragment_content_main)
+                navController.navigate(R.id.profileFragment) // Użyj ID z nav_graph.xml
                 true
             }
             else -> super.onOptionsItemSelected(item)
