@@ -30,6 +30,12 @@ class MainActivity : AppCompatActivity() {
 
         // Dodaj obserwatora do NavController oraz wymuszenie ponownego tworzenia menu po zmianie fragmentu
         navController.addOnDestinationChangedListener { _, destination, _ ->
+            val isRegisterFragmentVisible = destination.id == R.id.registerFragment
+            if (isRegisterFragmentVisible) {
+                binding.fab.hide()
+            } else {
+                binding.fab.show()
+            }
             invalidateOptionsMenu()
         }
 
