@@ -26,14 +26,7 @@
         tools:layout="@layout/main_menu" >
         <action
             android:id="@+id/action_mainMenu_to_current_bingo"
-            app:destination="@id/current_bingo"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-        <action
-            android:id="@+id/action_mainMenu_to_profileFragment"
-            app:destination="@id/profileFragment"
+            app:destination="@id/bingoActivity"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
@@ -44,12 +37,4 @@
         android:name="com.project.androidbingo.current_bingo"
         android:label="activity_current_bingo"
         tools:layout="@layout/activity_current_bingo" />
-
-    <!-- Dodaj nowy fragment ProfileFragment -->
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.project.androidbingo.ui.profile.ProfileFragment"
-        android:label="Mój profil"
-        tools:layout="@layout/fragment_profile" />
-
 </navigation>
