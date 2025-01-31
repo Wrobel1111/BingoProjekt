@@ -18,6 +18,7 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
+
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.project.androidbingo.ui.profile.ProfileFragment"
@@ -31,15 +32,25 @@
         tools:layout="@layout/main_menu" >
         <action
             android:id="@+id/action_mainMenu_to_current_bingo"
-            app:destination="@id/bingoActivity"
+            app:destination="@id/current_bingo"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_mainMenu_to_bingoActivity"
+            app:destination="@id/bingoActivity" />
     </fragment>
+
     <activity
         android:id="@+id/current_bingo"
         android:name="com.project.androidbingo.current_bingo"
         android:label="activity_current_bingo"
         tools:layout="@layout/activity_current_bingo" />
+
+    <activity
+        android:id="@+id/bingoActivity"
+        android:name="com.project.androidbingo.BingoActivity"
+        android:label="Bingo"
+        tools:layout="@layout/bingo_layout" />
 </navigation>
