@@ -9,6 +9,9 @@ import com.project.androidbingo.data.Result
 
 import com.project.androidbingo.R
 
+// zostawiamy do przyszlych celow rozbudowy aplikacji
+
+
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
 
     private val _loginForm = MutableLiveData<LoginFormState>()

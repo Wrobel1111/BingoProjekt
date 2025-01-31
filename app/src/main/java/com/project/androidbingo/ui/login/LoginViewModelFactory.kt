@@ -9,6 +9,9 @@ import com.project.androidbingo.data.LoginRepository
  * ViewModel provider factory to instantiate LoginViewModel.
  * Required given LoginViewModel has a non-empty constructor
  */
+
+// zostawiamy do przyszlych celow rozbudowy aplikacji
+
 class LoginViewModelFactory : ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
