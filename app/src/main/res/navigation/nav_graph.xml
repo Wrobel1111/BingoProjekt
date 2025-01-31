@@ -33,8 +33,8 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <activity
-        android:id="@+id/bingoActivity"
-        android:name="com.project.androidbingo.BingoActivity"
-        android:label="Bingo"
-        android:exported="false" />
+        android:id="@+id/current_bingo"
+        android:name="com.project.androidbingo.current_bingo"
+        android:label="activity_current_bingo"
+        tools:layout="@layout/activity_current_bingo" />
 </navigation>

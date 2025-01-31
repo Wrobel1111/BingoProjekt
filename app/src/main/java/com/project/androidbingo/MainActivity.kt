@@ -1,16 +1,15 @@
 package com.project.androidbingo
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
 import com.project.androidbingo.databinding.ActivityMainBinding
-import com.project.androidbingo.ui.profile.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,17 +28,27 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        //Czy użytkownik jest zarejestrowany
+        // Dodaj obserwatora do NavController oraz wymuszenie ponownego tworzenia menu po zmianie fragmentu
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            val isRegisterFragmentVisible = destination.id == R.id.registerFragment
+            if (isRegisterFragmentVisible) {
+                binding.fab.hide()
+            } else {
+                binding.fab.show()
+            }
+            invalidateOptionsMenu()
+        }
+
+        // Czy użytkownik jest zarejestrowany
         val sharedPreferences = getSharedPreferences("UserData", MODE_PRIVATE)
         val isRegistered = sharedPreferences.getBoolean("isRegistered", false)
-        //TODO: przy rejestracji trzeba wprowadzić odpowiednią zmianę
 
-
-        // Przekierowanie do RegisterFragment jesli jest zarejestrowany
-        if (!isRegistered)
+        // Przekierowanie do RegisterFragment jeśli nie jest zarejestrowany
+        if (!isRegistered) {
             navController.navigate(R.id.registerFragment)
+        }
 
-        //button ikona poczty
+        // Button ikona poczty
         binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null)
@@ -49,18 +58,22 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
+
+        // Pobieramy navcontroller, sprawdzamy czty aktualny fragment to register fragment i finalnie ukrywyamy przycisk moj profil jesli jesteśmy w registerfragmennt
+        val navController = findNavController(R.id.nav_host_fragment_content_main)
+        val isRegisterFragmentVisible = navController.currentDestination?.id == R.id.registerFragment
+        val profileMenuItem = menu?.findItem(R.id.action_profile)
+        profileMenuItem?.isVisible = !isRegisterFragmentVisible
+
         return true
     }
 
-    //Jeszcze nie działa
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_profile -> {
-                val profileFragment = ProfileFragment()
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, profileFragment)
-                    .addToBackStack(null)
-                    .commit()
+                // Nawiguj do ProfileFragment
+                val navController = findNavController(R.id.nav_host_fragment_content_main)
+                navController.navigate(R.id.profileFragment)
                 true
             }
             else -> super.onOptionsItemSelected(item)
