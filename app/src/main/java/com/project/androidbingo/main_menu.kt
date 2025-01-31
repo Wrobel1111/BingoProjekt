@@ -41,19 +41,19 @@ class MainMenu : Fragment() {
             tempButton.text = buttonNames[i - 1]
 
             tempButton.setOnClickListener {
-                tempButton.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.purple))
-                Toast.makeText(activity, "Twoje bingo: ${tempButton.text}", Toast.LENGTH_SHORT).show()
+                tempButton.setBackgroundColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.purple
+                    )
+                )
+                Toast.makeText(activity, "Twoje bingo: ${tempButton.text}", Toast.LENGTH_SHORT)
+                    .show()
 
                 val intent = Intent(activity, BingoActivity::class.java)
                 intent.putExtra("button_name", tempButton.text.toString())
                 findNavController().navigate(R.id.bingoActivity)
             }
-        }
-
-        val startButton = view.findViewById<Button>(R.id.button)
-        startButton.setOnClickListener {
-            val intent = Intent(activity, BingoActivity::class.java)
-            startActivity(intent)
         }
     }
 
