@@ -5,6 +5,7 @@
     android:id="@+id/nav_graph"
     app:startDestination="@+id/registerFragment">
 
+    <!-- Fragment rejestracji -->
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.project.androidbingo.ui.login.RegisterFragment"
@@ -19,17 +20,12 @@
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
 
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.project.androidbingo.ui.profile.ProfileFragment"
-        android:label="Mój profil"
-        tools:layout="@layout/fragment_profile" />
-
+    <!-- Główne menu -->
     <fragment
         android:id="@+id/mainMenu"
         android:name="com.project.androidbingo.MainMenu"
         android:label="main_menu"
-        tools:layout="@layout/main_menu" >
+        tools:layout="@layout/main_menu">
         <action
             android:id="@+id/action_mainMenu_to_current_bingo"
             app:destination="@id/current_bingo"
@@ -38,19 +34,44 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
         <action
-            android:id="@+id/action_mainMenu_to_bingoActivity"
-            app:destination="@id/bingoActivity" />
+            android:id="@+id/action_mainMenu_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <!-- Dodaj akcję do przejścia do AddBingoFragment -->
+        <action
+            android:id="@+id/action_mainMenu_to_addBingoFragment"
+            app:destination="@id/addBingoFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/mainMenu" />
     </fragment>
 
+    <!-- Aktualne Bingo -->
     <activity
         android:id="@+id/current_bingo"
         android:name="com.project.androidbingo.current_bingo"
         android:label="activity_current_bingo"
         tools:layout="@layout/activity_current_bingo" />
 
-    <activity
-        android:id="@+id/bingoActivity"
-        android:name="com.project.androidbingo.BingoActivity"
-        android:label="Bingo"
-        tools:layout="@layout/bingo_layout" />
+    <!-- Profil użytkownika -->
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.project.androidbingo.ui.profile.ProfileFragment"
+        android:label="Mój profil"
+        tools:layout="@layout/fragment_profile" />
+
+    <!-- Nowy fragment do dodawania planszy Bingo -->
+    <fragment
+        android:id="@+id/addBingoFragment"
+        android:name="com.project.androidbingo.ui.addbingo.AddBingoFragment"
+        android:label="Dodaj planszę Bingo"
+        tools:layout="@layout/fragment_add_bingo">
+        <!-- Możesz dodać akcje nawigacyjne, jeśli są potrzebne -->
+    </fragment>
+
 </navigation>

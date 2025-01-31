@@ -66,4 +66,10 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string-array name="bingo_categories">
+        <item>Książki</item>
+        <item>Podróże</item>
+        <item>Filmy</item>
+        <item>Kreatywnie</item>
+    </string-array>
 </resources>

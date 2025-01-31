@@ -16,12 +16,6 @@
             android:name=".current_bingo"
             android:exported="false" />
 
-
-        <activity android:name=".BingoActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AndroidBingo"/>
-
-
         <activity
             android:name=".MainActivity"
             android:exported="true"

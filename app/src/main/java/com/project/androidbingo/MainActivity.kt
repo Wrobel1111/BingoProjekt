@@ -10,6 +10,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.project.androidbingo.databinding.ActivityMainBinding
+import com.project.androidbingo.ui.addbingo.AddBingoFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -50,9 +51,14 @@ class MainActivity : AppCompatActivity() {
 
         // Button ikona poczty
         binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null)
-                .setAnchorView(R.id.fab).show()
+            val navController = findNavController(R.id.nav_host_fragment_content_main)
+            navController.navigate(R.id.action_mainMenu_to_addBingoFragment)
+
+            val addBingoFragment = AddBingoFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.nav_host_fragment_content_main, addBingoFragment)
+                .addToBackStack(null)
+                .commit()
         }
     }
 

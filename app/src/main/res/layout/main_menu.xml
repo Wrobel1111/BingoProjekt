@@ -7,15 +7,21 @@
     android:background="@drawable/tlo"
     tools:context=".MainMenu">
 
+    <!-- 🔹 Tylko jedno bezpośrednie dziecko dla NestedScrollView -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- Toolbar w prawym górnym rogu -->
+
+        <!-- ConstraintLayout jako główna część UI -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="16dp"
             tools:ignore="ExtraText">
+
 
             <ImageView
                 android:id="@+id/Greeter"
@@ -28,7 +34,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.239"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <ImageView
                 android:id="@+id/textView"
@@ -41,7 +47,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Greeter" />
+                app:layout_constraintTop_toBottomOf="@+id/Greeter"/>
 
             <HorizontalScrollView
                 android:layout_width="409dp"
@@ -62,36 +68,36 @@
                         android:layout_width="150dp"
                         android:layout_height="100dp"
                         android:layout_margin="16dp"
-                        android:backgroundTint="@color/blue"
                         android:fontFamily="@font/font"
-                        android:text="test" />
+                        android:backgroundTint="@color/blue"
+                        android:text="test"/>
 
                     <Button
                         android:id="@+id/button_bingo_2"
                         android:layout_width="150dp"
                         android:layout_height="100dp"
                         android:layout_margin="16dp"
-                        android:backgroundTint="@color/yellow"
                         android:fontFamily="@font/font"
-                        android:text="test 2" />
+                        android:backgroundTint="@color/yellow"
+                        android:text="test 2"/>
 
                     <Button
                         android:id="@+id/button_bingo_3"
                         android:layout_width="150dp"
                         android:layout_height="100dp"
                         android:layout_margin="16dp"
-                        android:backgroundTint="@color/orange"
                         android:fontFamily="@font/font"
-                        android:text="test 3" />
+                        android:backgroundTint="@color/orange"
+                        android:text="test 3"/>
 
                     <Button
                         android:id="@+id/button_bingo_4"
                         android:layout_width="150dp"
                         android:layout_height="100dp"
                         android:layout_margin="16dp"
-                        android:backgroundTint="@color/green"
                         android:fontFamily="@font/font"
-                        android:text="test 4" />
+                        android:backgroundTint="@color/green"
+                        android:text="test 4"/>
                 </LinearLayout>
             </HorizontalScrollView>
         </androidx.constraintlayout.widget.ConstraintLayout>

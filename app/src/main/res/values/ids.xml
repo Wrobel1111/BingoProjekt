@@ -2,5 +2,4 @@
 <resources>
     <item name="action_profile" type="id" />
     <item name="fragment_container" type="id" />
-    <item name="bingoActivity" type="id" />
 </resources>
